@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#FF69B4"        # Hot pink for buttons and highlights
+backgroundColor = "#FFE4E1"     # Light pink (Misty Rose) for main background
+secondaryBackgroundColor = "#FFE4E1"  # Match main background for uniformity
+textColor = "#C71585"          # Medium violet red for text
+font = "sans serif"            # Clean font like Arial
