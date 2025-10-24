@@ -5,7 +5,7 @@ st.markdown("""
 <style>
 /* Main app and body background */
 .stApp {
-    background-color: #FFE4E1 !important;
+    background-color: #FFEBEB !important;
 }
 
 /* Main text (headings, paragraphs, labels) */
@@ -14,10 +14,21 @@ body, h1, h2, h3, h4, h5, h6, .stMarkdown, .stTextInput > label, .stMultiselect 
     font-family: 'Arial', sans-serif; /* Clean font for readability */
 }
 
+/* Center title */
+div.st-key-app_title div.stHeading {
+    text-align: center;
+}
+
 /* Input fields and selectboxes text */
 .stTextInput input, .stMultiselect div[role='combobox'] {
     color: #C71585 !important; /* Pink text in inputs */
     background-color: #FFF !important; /* White background for inputs for contrast */
+}
+
+/* Styling the dropdown list when it's open */
+ul[data-testid="stSelectboxVirtualDropdown"] {
+    background-color: white !important;
+    border: 1px solid #ccc !important;
 }
 
 /* Affirmation output (success message) */
@@ -83,7 +94,29 @@ motivational_quotes = [
     "“Who you are today is the foundation for who you’ll become.”",
     "“Your identity is your power—wield it with courage.”",
     "“Every challenge you face shapes the masterpiece of you.”",
-    "“Celebrate your unique self; you are enough.”"
+    "“Celebrate your unique self; you are enough.”",
+    "“Believe you can and you're halfway there.” — Theodore Roosevelt",
+    "“The only person you are destined to become is the person you decide to be.” — Ralph Waldo Emerson",
+    "“The question isn't who is going to let me; it's who is going to stop me.” — Ayn Rand",
+    "“Winning is not a sometime thing; it's an all the time thing.” — Vince Lombardi",
+    "“Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.” — Christian D. Larson",
+    "“You miss 100% of the shots you don't take.” — Wayne Gretzky",
+    "“I alone cannot change the world, but I can cast a stone across the water to create many ripples.” — Mother Teresa",
+    "“You become what you believe.” — Oprah Winfrey",
+    "“The most difficult thing is the decision to act, the rest is merely tenacity.” — Amelia Earhart",
+    "“How wonderful it is that nobody need wait a single moment before starting to improve the world.” — Anne Frank",
+    "“The unexamined life is not worth living.” — Socrates",
+    "“Everything you've ever wanted is on the other side of fear.” — George Addair",
+    "“Dream big and dare to fail.” — Norman Vaughan",
+    "“It does not matter how slowly you go as long as you do not stop.” — Confucius",
+    "“Hardships often prepare ordinary people for an extraordinary destiny.” — C.S. Lewis",
+    "“Too many of us are not living our dreams because we are living our fears.” — Les Brown",
+    "“I have learned over the years that when one's mind is made up, this diminishes fear.” — Rosa Parks",
+    "“If you're offered a seat on a rocket ship, don't ask what seat! Just get on.” — Sheryl Sandberg",
+    "“I attribute my success to this: I never gave or took any excuse.” — Florence Nightingale",
+    "“Dreaming, after all, is a form of planning.” — Gloria Steinem",
+    "“Whatever the mind of man can conceive and believe, it can achieve.” — Napoleon Hill",
+    "“Twenty years from now, you will be more disappointed by the things you didn't do than by the ones you did. So, throw off the bowlines, sail away from safe harbor, catch the trade winds in your sails. Explore. Dream. Discover.” — Mark Twain"
 ]
 
 # Affirmation templates for variety
@@ -99,8 +132,8 @@ affirmation_templates = [
     "{name}, the {roles_str}, channels a {strengths_str} mindset to overcome {challenges_str}, succeeding as you {action}! {emoji}",
     "With your {strengths_str} core, {name}, you soar as a {roles_str}, conquering {challenges_str} to {action}. {emoji}"
 ]
-
-st.title("🌟 Empower Your Identity 🌟")
+with st.container(key="app_title"):
+    st.title("🌟 Empower Your Identity 🌟")
 
 st.markdown("""
 Welcome! Discover your identity by selecting multiple roles, strengths, and challenges. 
@@ -111,7 +144,7 @@ We'll generate a personalized affirmation, just for you!
 name = st.text_input("Your name (optional):", placeholder="Enter your name or leave blank")
 
 selected_roles = st.multiselect(
-    "Select parts of your identity roles (click to choose multiple):",
+    "Select parts of your identity roles (click multiple):",
     options=roles,
     placeholder="Choose role(s)"
 )
